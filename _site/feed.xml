@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-14T13:32:03+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-14T14:13:51+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…&lt;/p&gt;
 
 &lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
 &lt;p&gt;It is often argued that former US president Donald Trump’s upset victory in the 2016 elections strongly relates to his ability to monopolize the attention of mass media outlets [1]. Although the former president’s polemical nature granted him a front row seat at almost every (inter)national newspaper in the months and years preceding the election [2], it can be a difficult task to assess the impact that such incessant media coverage had on the final outcome of the presidential elections. This is precisely the question that we aim to answer in the following study. We use the quotebank corpus to analyse possible correlations and causations between the media coverage of three different major outlets with notoriously distinct political inclinations: CNN (democrat), BBC (centrist) and Fox News (republican) as well as voting intentions in the months preceding each elections.&lt;/p&gt;
@@ -14,10 +14,10 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;a-visual-tour-of-media-coverage--voting-intentions&quot;&gt;A visual tour of media coverage &amp;amp; voting intentions&lt;/h2&gt;
+&lt;h1 id=&quot;a-visual-tour-of-media-coverage--voting-intentions&quot;&gt;A visual tour of media coverage &amp;amp; voting intentions&lt;/h1&gt;
 &lt;p&gt;In this section, we present a visual description of the data parsing and manipulations performed in order to begin our study.&lt;/p&gt;
 
-&lt;h3 id=&quot;media-coverage&quot;&gt;Media Coverage&lt;/h3&gt;
+&lt;h2 id=&quot;media-coverage&quot;&gt;Media Coverage&lt;/h2&gt;
 &lt;p&gt;Retrieving media coverage was done solely through the Quotebank dataset [3]. We started by retrieving all the quotations for the years in which a presidential election occurred (2012, 2016 and 2020) and which originated from one of the following three newspapers: NYTimes, Fox News, BBC (done by checking the origin of each link in the dataset’s url column).&lt;/p&gt;
 
 &lt;p&gt;For each of the parsed quotation, we kept only those that included at least one occurrence of the presidential candidates names (or their running mates) within the quotation, the speaker or the url attributes of the dataset. Finally, we built timelines of the retrieved occurrence for each of the three aforementioned newspapers in the months preceding the presidential elections (January - November) in 2012, 2016 and 2020.&lt;/p&gt;
@@ -30,18 +30,22 @@
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;First&lt;/strong&gt;: the data for the 2012 elections that we retrieved is fairly well represented with generally more mentions in the NY Times, somewhat closely followed by Fox News and finally by BBC which (as expected) has the least mentions- we believe that BBC should have the least mentions because it isn’t a natively American newspaper and as it is generally regarded as a more “centrist” newspaper - in contrast to NY Times that is typically democrat leaning and Fox News that is republican leaning.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;First&lt;/strong&gt;: the data for the 2012 elections that we retrieved is fairly well represented with generally more mentions in the NY Times, somewhat closely followed by Fox News and finally by BBC which (as expected) has the least mentions- we believe that BBC should have the least mentions because it isn’t a natively American newspaper and since it is generally regarded as a more “centrist” leaning - in contrast to NY Times that is typically democrat leaning and Fox News that is republican leaning.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Second&lt;/strong&gt;: we are missing a considerable amount of data for the months of January-June, October 2016 and May-November 2020. This could potentially mean that there are only very few mentions in the newspapers we target (which seems highly unlikely considering the general fuss in the months leading to the elections and by comparing it with the 2012 data retrieved). A more plausible explanation refers to the quality of the Quotebank dataset, simply missing relevant quotations in these months. Concerning 2020, we noted that the Quotebank data retrieval ended in April 2020, which confirms our observation. Concerning the 2016, we note in the visualization below that the missing data is simply caused by the poor nature of the dataset.&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;Second&lt;/strong&gt;: we are missing a considerable amount of data for the months of January-June, October 2016 and May-November 2020. This could potentially mean that there are only very few mentions in the newspapers we target (which seems highly unlikely considering the general fuss in the months leading to the elections and by comparing it with the 2012 data retrieved). A more plausible explanation refers to the quality of the Quotebank dataset, simply missing relevant quotations in these months. Concerning 2020, we noted that the Quotebank data retrieval ended in April 2020 [3], which confirms our observation. Concerning the 2016, we note in the visualization below that the missing data is simply caused by the poor nature of the dataset.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;iframe src=&quot;/img/posts/bubble_2016_statistics.html&quot; height=&quot;500px&quot; width=&quot;100%&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 
+&lt;p&gt;We illustrate in the bubble chart the total number of quotations present in the Quotebank dataset for a given newspaper in a given month (indicated by the larger transparent bubbles) versus the number of quotations retrieved that include any of our keywords of insterest (presidential candidate name or running mate name) for a given newspaper in a given month. We distinctly note that the Quotebank dataset exhibits very few total quotations for any of the newspapers in the months of January to June (inclusive) and October. To this observation we add the fact that the authors of Quotebank mention that…. [ANTOINE WHERE DID YOU FIND IT IN THE PAPER - ADD HERE]&lt;/p&gt;
+
+&lt;p&gt;We then proceed in our analysis by visualizing the distribution of mentions per candidate retrieved for the three years of interest (independently of the newspaper in which the mention occurred). We see in the visualization below a very interesting trend in which the republican candidates are generally more represented/mentioned in the three elections (without distinguishing between newspapers). Although the difference between Obama and Romney remains somewhat limited, the few months we can observe in the 2016 and 2020 elections show a complete disproportion in coverage between Trump and the democratic candidate.&lt;/p&gt;
+
 &lt;iframe src=&quot;/img/posts/candidates_over_year.html&quot; height=&quot;500px&quot; width=&quot;100%&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
 
-&lt;p&gt;We see in the visualization above a very interesting trend in which the republican candidates are generally more represented/mentioned in the three elections (without distinguishing between newspapers). Although the difference between Obama and Romney remains somewhat limited, the few months we can observe in the 2016 and 2020 elections show a complete disproportionate coverage between Trump and the democratic candidate. It is also interesting to note the overall difference between the republican and the democratic candidate over the span of the three elections. In 2012, we found 2695 more quotation referring to the republican candidate (Mitt Romney) than the democratic candidate (Barack Obama). This number is then increased almost two-fold (5460 quotations in 2016 and 4245 quotations in 2020) for the 2016 and 2020 elections. Even considering all the missing data in our set for 2016 and 2020, this is a notable difference that may be even more drastic with a full dataset. Such an observation may raise the question on whether the arrival of Donald Trump as a presidential candidate motivated an increase in media coverage difference between republican and democratic candidate.&lt;/p&gt;
+&lt;p&gt;It is also interesting to note the overall difference between the republican and the democratic candidate over the span of the three elections. In 2012, we found 2695 more quotation referring to the republican candidate (Mitt Romney) than the democratic candidate (Barack Obama). This number is then increased almost two-fold (5460 quotations in 2016 and 4245 quotations in 2020) for the 2016 and 2020 elections. Even considering all the missing data in our set for 2016 and 2020, this is a notable difference that may be even more drastic with a full dataset. Such an observation may raise the question on whether the arrival of Donald Trump as a presidential candidate motivated an increase in media coverage difference between republican and democratic candidate.&lt;/p&gt;
 
 &lt;p&gt;We can further delve into the difference in coverage between republican and democratic candidate by visualizing the distribution of quotations referring to each candidate on a newspaper basis.&lt;/p&gt;
 &lt;iframe src=&quot;/img/posts/candidates_over_year_newspaper.html&quot; height=&quot;500px&quot; width=&quot;100%&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
@@ -52,9 +56,56 @@
 
 &lt;p&gt;Nevertheless, in 2016 and 2020, the republican candidate always gets more media coverage than the democratic one.&lt;/p&gt;
 
-&lt;h3 id=&quot;voting-intentions&quot;&gt;Voting Intentions&lt;/h3&gt;
+&lt;h2 id=&quot;voting-intentions&quot;&gt;Voting Intentions&lt;/h2&gt;
 
-&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+&lt;p&gt;After scraping the polls the voting intentions taken from different surveys accross the United States from January 2012/2016/2020 to November 2012/2016/2020, we’ve plotted the line plots per candidate and per year…&lt;/p&gt;
+
+&lt;p&gt;[ADD VOTING INTENTIONS PLOT HERE]&lt;/p&gt;
+
+&lt;h1 id=&quot;getting-our-hands-dirty&quot;&gt;Getting our hands dirty&lt;/h1&gt;
+
+&lt;p&gt;We perform the correlation study here. We first start by a baseline model in which we compare media coverage and voting intentions on a per week? basis. We use regression analysis/statistical tests…. FILL IN HERE
+We then further the analysis by including sentiment analysis as a covariate…. FILL IN HERE&lt;/p&gt;
+
+&lt;p&gt;In this section, we’ll study the correlation between the media coverage quantified and the voting intentions. First we’ve implemented a very simple baseline model… and then we’ve enhanced it by using unsupervised sentiment analysis…&lt;/p&gt;
+
+&lt;h2 id=&quot;baseline-correlation-study-between-media-coverage--voting-intentions&quot;&gt;Baseline Correlation Study Between Media Coverage &amp;amp; Voting intentions&lt;/h2&gt;
+
+&lt;p&gt;We started our correlation analysis by applying Spearman/pearson (it depends if the distributions are gaussian…)&lt;/p&gt;
+
+&lt;p&gt;[adding a plot of the distributions]&lt;/p&gt;
+
+&lt;p&gt;[ adding the barplot of pearson/spearman correlation per each candidate and for a given media coverage per newspaper(eg. BBC with the ‘6’ candidates…) ]&lt;/p&gt;
+
+&lt;p&gt;[ adding the barplot of mutual information per each candidate and for a given media coverage per newspaper(eg. BBC with the ‘6’ candidates…) ]&lt;/p&gt;
+
+&lt;p&gt;[adding a description of this initial study]&lt;/p&gt;
+
+&lt;p&gt;[adding the regression analysis : voting_intention = intercept + media_coverage ]&lt;/p&gt;
+
+&lt;p&gt;[adding a description of this study and the conclusion ]&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-sentiment-analysis&quot;&gt;Adding Sentiment Analysis&lt;/h2&gt;
+
+&lt;p&gt;In this section we’ll improve the correlation study by adding more covariates(sentiment analysis…)&lt;/p&gt;
+
+&lt;p&gt;First let’s have a look the implementation of the unsupervised sentiment analysis on each quote that mentionned one of our candidates in 2012/2016/2020.&lt;/p&gt;
+
+&lt;p&gt;[adding a description on how the sentiment analysis was implemented]&lt;/p&gt;
+
+&lt;p&gt;[ADD SENTIMENT ANALYSIS PLOTS HERE]&lt;/p&gt;
+
+&lt;p&gt;wordclouds&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/wordcloud_2016.png&quot; alt=&quot;wordclout2016&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/posts/wordcloud_2020.png&quot; alt=&quot;wordcloud2020&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;so-did-we-find-adastonishing-results&quot;&gt;So, did we find ADAstonishing results?&lt;/h1&gt;
+
+&lt;p&gt;Conclude the study here&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
 &lt;p&gt;[1] &lt;em&gt;https://www.politico.com/magazine/story/2016/11/2016-election-trump-media-takeover-coverage-214419/&lt;/em&gt;&lt;br /&gt;
 [2] &lt;em&gt;https://www.bbc.co.uk/news/36429660.amp&lt;/em&gt;&lt;br /&gt;
 [3] &lt;em&gt;https://dl.acm.org/doi/10.1145/3437963.3441760&lt;/em&gt;&lt;br /&gt;
