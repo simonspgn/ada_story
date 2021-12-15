@@ -2,8 +2,8 @@ title:              SARS Project
 email:
 description:        Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!
 author:             Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand
-baseurl:            "/ada_story"
-url:                "https://simonspgn.github.io"
+baseurl:            ""
+url:                "https://ada_story.github.io"
 
 # Social Profiles
 twitter_username:
