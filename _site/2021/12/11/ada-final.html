@@ -70,7 +70,7 @@
               <a href="#">Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</a>
               on December 11, 2021 &middot; <span class="reading-time" title="Estimated read time">
   
-   17 mins  read </span>
+   24 mins  read </span>
 
             </span>
           </div>
@@ -155,8 +155,7 @@ We then further the analysis by including sentiment analysis as a covariate…. 
 
 <p>In this section, we’ll study the correlation between the media coverage quantified and the voting intentions. First we’ve implemented a very simple baseline model… and then we’ve enhanced it by using unsupervised sentiment analysis…</p>
 
-<p>TALK ABOUT THE RESCALING OF THE DATA - WHY WAS THIS NECESSARY, HOW DID WE DO IT? - RAPHAEL (be expressive here).
-Raphael: you say “Note that we will refer to the variable “intention_mean” by intention vote and “weekly_occurrences_rescaled” by media coverage.” This is not super clear to me, can you expand/describe.</p>
+<p>There are several timeframe levels (such as year, month, week and day) in which we can aggregate the results for each combination of election year, candidate, and newspaper. If we aggregate by year we will have 1 data point only, by month 12 data points at most and 3 in the worst case (because some months will be discarded due to the small amount of occurrences). Due to the lack of data in 2016 and 2020 we found that the it may be a better  compromise between number of occurrences per period of time and the number of data points is achieved when we aggregate by week. The aggregation is performed as follows: take the mean of intention votes over the week (by choosing the end date of the poll to specify the week), and the occurrences will be rescaled by taking the occurrences of quotes for a specific combination over the week and dividing it by the total number of quotations in the specific week and newspaper.</p>
 
 <h2 id="baseline-correlation-study-between-media-coverage--voting-intentions">Baseline Correlation Study Between Media Coverage &amp; Voting intentions</h2>
 
@@ -188,19 +187,126 @@ Raphael: you say “Note that we will refer to the variable “intention_mean”
 
 <h2 id="adding-sentiment-analysis">Adding Sentiment Analysis</h2>
 
-<p>In this section we’ll improve the correlation study by adding more covariates(sentiment analysis…)</p>
+<p>Until now we’ve considered all candidate’s name mentions with the same weight but we argue that two quotes with a
+candidate’s name mention can have very different effect based on positive or negative sentiment towards the candidate.
+Therefore, we want expand our analysis with an additional dimension : polarity.</p>
 
-<p>First let’s have a look the implementation of the unsupervised sentiment analysis on each quote that mentionned one of our candidates in 2012/2016/2020.</p>
+<p>Given our finite time, we have to assume some properties :</p>
 
-<p>[adding a description on how the sentiment analysis was implemented]</p>
+<ul>
+  <li>[Sentiment soundness] We assume the aggregated sentiment of the quote reflect the general sentiment toward the
+candidate i.e there is a negligible number of hypocrite, humorous or 2nd degree quotes.</li>
+  <li>[No external bias] QuoteBank is a non-biased sample of media coverage. This would be the case if QuoteBank was a
+complete set of all <em>words</em> used in the newspaper for the last 20 years, which is not feasible. QuoteBank is biased
+but we suppose for the sack of analysis its bias does not interfere.</li>
+</ul>
 
-<p>[ADD SENTIMENT ANALYSIS PLOTS HERE]</p>
+<p>As we don’t have a labeled dataset, we opted for unsupervised sentiment analysis which unfortunately makes it difficult
+to assess the accuracy. On the other hand, manually labelling quotes (&gt;10’000) would have been impossible in the given
+timeframe.</p>
+
+<h3 id="sentiment-classification">Sentiment Classification</h3>
+
+<p>Our model will take text as input and output the sentiment associated to it.</p>
+
+<ol>
+  <li>text:- Actual quote</li>
+  <li>sentiment:- Floating value between -1 (negative) and +1 (positive).</li>
+</ol>
+
+<h3 id="preprocessing">Preprocessing</h3>
+
+<p>We applied a simple preprocessing pipeline to the quotes to prepare them for sentiment analysis. The first step comes
+with removing the noises in the data; noise is referred to as something which not related to textual human language, and
+those come with various nature like special characters, use of parentheses, use of square brackets, white spaces, URL’s
+and punctuations.</p>
+
+<p>Text normalisation starts with tokenizing the text, which our longer corpus is now to be split into words, which the
+tokenizer class from NLTK can do. Post that, we need to lower case each word of our corpus, converting numbers to the
+words, contraction replacement and last stemming and lemmatization.</p>
+
+<p>– Pipeline –</p>
+
+<ul>
+  <li>Remove punctuation</li>
+  <li>Make text lowercase</li>
+  <li>Tokenization</li>
+  <li>Remove stopwords</li>
+  <li>Stemming</li>
+  <li>Lemmatization</li>
+</ul>
+
+<h3 id="sentiment-analysis-implementation">Sentiment Analysis Implementation</h3>
+
+<p>First let’s have a look the implementation of the unsupervised sentiment analysis on each quote that mentioned one of
+our candidates in 2012/2016/2020.</p>
+
+<p>We tried three different unsupervised models :</p>
+
+<ul>
+  <li><a href="https://github.com/cjhutto/vaderSentiment">VADER</a> (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and
+rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. It predicts
+the sentiment of the quote as a float, positive values are positive valence, negative value are negative valence.</li>
+  <li><a href="https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment">Pre-trained BERT</a> with &gt;700 embeddings (
+bert-base-multilingual-uncased-sentiment). It predicts the sentiment of the review as a number of stars (between 1 and
+  5) and ensures 65% accuracy on their testing dataset.</li>
+  <li><a href="https://textblob.readthedocs.io/en/dev/quickstart.html#sentiment-analysis">TextBlob</a>. It aims to provide access to
+common text-processing operations through a familiar interface. The polarity score is a float within the
+range [-1.0, 1.0]. The subjectivity is a float within the range [0.0, 1.0] where 0.0 is very objective and 1.0 is very
+subjective.</li>
+</ul>
+
+<h4 id="model-selection">Model selection</h4>
+
+<p>Model selection was done using visualisation tools such as barplots, word-clouds (
+see <a href="exploratory_data_analysis.ipynb">exploratory_data_analysis.ipynb</a>). All further plots were done with the best
+model (TextBlob) which provided the most interesting results and two metrics (with subjectivity)
+instead of one. Furthermore, as we aggregate the data by month/by weeks for the correlation analysis, it was decided
+more accurate to use numerical data instead of categorical as polarity score.</p>
+
+<p>Processing was simply done by iterating over the dataset and applying the model to each quote.</p>
+
+<p>Example:
+<strong>Original quote</strong> : <em>Trump’s a tough guy to vote for</em>.
+<strong>Preprocessed quote</strong> : <em>trump tough guy vote</em>.
+<strong>Polarity/subjectivity score</strong> : [-0.389, 0.834].</p>
+
+<h4 id="model-validation">Model validation</h4>
+
+<p>[ADD WORDCLOUDS FOR EACH YEAR]</p>
+
+<p>Word-clouds sort the most present words by size. We partition the datasets for each year by positive/negative quotes and
+plot their respective word-clouds. We classify quotes with negative polarity valence (&lt; -0.8) as negative and positive
+polarity valence (&gt;0.8) as positive quotes. We can intuitively assess the precision of our model by looking at them. We
+observe a majority of [‘great’, ‘good’, ‘win’] for positive quotes and [‘worst’, ‘hate’] for negative quotes.</p>
+
+<p>[ADD FREQUENCY DISTRIBUTION OF POLARITY AND SUBJECTIVITY SCORES OVER 2012, 2016, 2020]</p>
+
+<p>We observe that a majority of quotes are analyzed as neutral (with respect to all models). This could be explained by a
+bias of the dataset as well as our sentiment analysis bias. We figured that the choice of stopwords to be removed from
+the strings is crucial to attributing positive or negative values.</p>
+
+<h4 id="evolution-of-polarity--subjectivity-score-over-months-prior-to-election">Evolution of polarity &amp; subjectivity score over months prior to election</h4>
+
+<p>We decide to compare vote intentions with aggregated polarity of quotes on a candidate/monthly basis. Let’s plot the
+polarity and subjectivity distributions over time aggregated by month and candidate.</p>
+
+<p>[ADD POLARITY AND SUBJECTIVITY DISTRIBUTIONS AGGREGATED BY MONTH AND CANDIDATE]</p>
+
+<p>*</p>
+
+<p>Unfortunately, the change in polarity (y-axis) from a month to another is very small in most cases which makes it
+difficult to conclude a meaningful statistical change. However we observe a very different timeline for 2016 election
+due to missing data and quotes from 2020 don’t extend past April.</p>
 
 <p>wordclouds</p>
 
 <p><img src="/ada_story/img/posts/wordcloud_2016.png" alt="wordcloud2016" /></p>
 
 <p><img src="/ada_story/img/posts/wordcloud_2020.png" alt="wordcloud2020" /></p>
+
+<p>Correlation Results</p>
+<iframe src="/ada_story/img/posts/sentiment_correlation.html" height="600px" width="110%" frameborder="0"></iframe>
 
 <h1 id="so-did-we-find-adastonishing-results">So, did we find ADAstonishing results?</h1>
 
