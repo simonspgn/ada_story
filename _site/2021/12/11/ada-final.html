@@ -85,7 +85,10 @@
       <!col-lg-8 col-md-10 mx-auto>
         <p>Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…</p>
 
-<h1 id="background">Background</h1>
+<center>
+  <h1>Background</h1>
+</center>
+
 <p>It is often argued that former US president Donald Trump’s upset victory in the 2016 elections strongly relates to his ability to monopolize the attention of mass media outlets [1]. Although the former president’s polemical nature granted him a front row seat at almost every (inter)national newspaper in the months and years preceding the election [2], it can be a difficult task to assess the impact that such incessant media coverage had on the final outcome of the presidential elections. This is precisely the question that we aim to answer in the following study. We use the quotebank corpus to analyse possible correlations and causations between the media coverage of three different major outlets with notoriously distinct political inclinations: CNN (democrat), BBC (centrist) and Fox News (republican) as well as voting intentions in the months preceding each elections.</p>
 
 <p>One of the first questions that we were faced with related to finding accurate means of quantifying media coverage and voting intentions. As such, we define the following:</p>
@@ -99,10 +102,17 @@
   </li>
 </ul>
 
-<h1 id="a-visual-tour-of-media-coverage--voting-intentions">A visual tour of media coverage &amp; voting intentions</h1>
+<center>
+  <h1> A visual tour of media coverage &amp; voting intentions
+</h1>
+</center>
+
 <p>In this section, we present a visual description of the data parsing and manipulations performed in order to begin our study.</p>
 
-<h2 id="media-coverage">Media Coverage</h2>
+<center>
+  <h2>Media Coverage</h2>
+</center>
+
 <p>Retrieving media coverage was done solely through the Quotebank dataset [3]. We started by retrieving all the quotations for the years in which a presidential election occurred (2012, 2016 and 2020) and which originated from one of the following three newspapers: NYTimes, Fox News, BBC (done by checking the origin of each link in the dataset’s url column).</p>
 
 <p>For each of the parsed quotation, we kept only those that included at least one occurrence of the presidential candidates names (or their running mates) within the quotation, the speaker or the url attributes of the dataset. Finally, we built timelines of the retrieved occurrence for each of the three aforementioned newspapers in the months preceding the presidential elections (January - November) in 2012, 2016 and 2020.</p>
@@ -142,7 +152,9 @@
 
 <p>Nevertheless, in 2016 and 2020, the republican candidate always gets more media coverage than the democratic one.</p>
 
-<h2 id="voting-intentions">Voting Intentions</h2>
+<center>
+  <h2>Voting Intentions</h2>
+</center>
 
 <p>In order to quantify the change of public opinion during the election period, we based our analysis on a total of 263 national surveys conducted by diﬀerent agencies (an average of 2.7 surveys per day), in which the forecaster of vote of each candidate was measured in a gap of a few days (around 3-5 days). This data, which shows the result of diﬀerent pollsters and the date that it was done, was downloaded from Real Clear Politics websites : <a href="https://www.realclearpolitics.com/epolls/2020/president/us/general_election_trump_vs_biden-6247.html#polls">Polls 2020</a>, <a href="https://www.realclearpolitics.com/epolls/2016/president/us/general_election_trump_vs_clinton-5491.html">Polls 2016</a>, <a href="https://www.realclearpolitics.com/epolls/2012/president/us/general_election_romney_vs_obama-1171.html#!">Polls 2012</a> using a python web scraper. All national surveys that are presented in this work used a demographic balanced sample.</p>
 
@@ -154,7 +166,9 @@
 
 <p>Now we aim to explore how mass media contributed to the formation of these ﬂuctuations and try to infer if and how the mass media can inﬂuence in the vote of the citizens.</p>
 
-<h1 id="getting-our-hands-dirty">Getting our hands dirty</h1>
+<center>
+   <h1> Getting our hands dirty</h1>
+ </center>
 
 <p>We perform the correlation study here. We first start by a baseline model in which we compare media coverage and voting intentions on a per week? basis. We use regression analysis/statistical tests…. FILL IN HERE
 We then further the analysis by including sentiment analysis as a covariate…. FILL IN HERE</p>
@@ -163,7 +177,9 @@ We then further the analysis by including sentiment analysis as a covariate…. 
 
 <p>There are several timeframe levels (such as year, month, week and day) in which we can aggregate the results for each combination of election year, candidate, and newspaper. If we aggregate by year we will have 1 data point only, by month 12 data points at most and 3 in the worst case (because some months will be discarded due to the small amount of occurrences). Due to the lack of data in 2016 and 2020 we found that the it may be a better  compromise between number of occurrences per period of time and the number of data points is achieved when we aggregate by week. The aggregation is performed as follows: take the mean of intention votes over the week (by choosing the end date of the poll to specify the week), and the occurrences will be rescaled by taking the occurrences of quotes for a specific combination over the week and dividing it by the total number of quotations in the specific week and newspaper.</p>
 
-<h2 id="baseline-correlation-study-between-media-coverage--voting-intentions">Baseline Correlation Study Between Media Coverage &amp; Voting intentions</h2>
+<center>
+  <h2>Baseline Correlation Study Between Media Coverage &amp; Voting intentions</h2>
+</center>
 
 <p>NOTE: Since we use a p-value to confirm/reject our correlation study, we may have to expressively describe what the null hypothesis is.</p>
 
@@ -348,7 +364,9 @@ We then further the analysis by including sentiment analysis as a covariate…. 
 
 <p>Consequently, we present in the next section the sentiment analysis conducted on our datasets and the results achieved, with some possible interpretations of the observations witnessed.</p>
 
-<h2 id="adding-sentiment-analysis">Adding Sentiment Analysis</h2>
+<center>
+  <h2>Correlation Study with Sentiment Analysis</h2>
+</center>
 
 <p>Until now we’ve considered all candidate’s name mentions with the same weight but we argue that two quotes with a
 candidate’s name mention can have very different effect based on positive or negative sentiment towards the candidate. Therefore, we want expand our analysis with an additional dimension : polarity. We hope this can guide our previous results.</p>
@@ -364,7 +382,9 @@ but we suppose for the sack of analysis its bias does not interfere.</li>
 
 <p>Since we don’t own a labeled dataset, we opted for unsupervised sentiment analysis which unfortunately makes it difficult to assess the accuracy. On the other hand, manually labelling quotes (&gt;10’000) would have been impossible in the given timeframe.</p>
 
-<h3 id="sentiment-classification">Sentiment Classification</h3>
+<center>
+  <h3>Preprocessing</h3>
+</center>
 
 <p>Our model will take text as input and output the sentiment associated to it.</p>
 
@@ -372,8 +392,6 @@ but we suppose for the sack of analysis its bias does not interfere.</li>
   <li>text:- Actual quote</li>
   <li>sentiment:- Floating value between -1 (negative) and +1 (positive).</li>
 </ol>
-
-<h3 id="preprocessing">Preprocessing</h3>
 
 <p>We applied a simple preprocessing pipeline to prepare quotes for sentiment analysis. The first step comes with removing the noises in the data; noise is referred to as something which not related to textual human language, and those come with various nature like special characters, use of parentheses, use of square brackets, white spaces, URL’s and punctuations.</p>
 
@@ -394,7 +412,9 @@ but we suppose for the sack of analysis its bias does not interfere.</li>
 <strong>Original quote</strong> : <em>Trump’s a tough guy to vote for</em>.
 <strong>Preprocessed quote</strong> : <em>trump tough guy vote</em>.</p>
 
-<h3 id="sentiment-analysis-implementation">Sentiment Analysis Implementation</h3>
+<center>
+  <h3>Sentiment Analysis Implementation</h3>
+</center>
 
 <p>First let’s have a look the implementation of the unsupervised sentiment analysis on each quote that mentioned one of
 our candidates in 2012/2016/2020.</p>
@@ -408,7 +428,9 @@ different <a href="https://github.com/epfl-ada/ada-2021-project-sars/tree/main/s
   <li><a href="https://textblob.readthedocs.io/en/dev/quickstart.html#sentiment-analysis">TextBlob</a>. It aims to provide access to common text-processing operations through a familiar interface. The polarity score is a float within the range [-1.0, 1.0]. The subjectivity is a float within the range [0.0, 1.0] where 0.0 is very objective and 1.0 is very subjective.</li>
 </ul>
 
-<h4 id="model-selection">Model selection</h4>
+<center>
+  <h3>Results</h3>
+</center>
 
 <p>Model selection was done using visualisation tools such as barplots, word-clouds (
 see <a href="https://github.com/epfl-ada/ada-2021-project-sars/tree/main/sentiment_analysis#:~:text=exploratory_data_analysis.ipynb">notebook</a>)
@@ -427,8 +449,6 @@ see <a href="https://github.com/epfl-ada/ada-2021-project-sars/tree/main/sentime
 <strong>Preprocessed quote</strong> : <em>trump tough guy vote</em>.
 <strong>Polarity/subjectivity score</strong> : [-0.389, 0.834].</p>
 
-<h4 id="model-validation">Model validation</h4>
-
 <p><img src="/ada_story/img/posts/wordcloud_2016.png" alt="image" /></p>
 
 <p><img src="/ada_story/img/posts/wordcloud_2020.png" alt="image 2" /></p>
@@ -437,13 +457,14 @@ see <a href="https://github.com/epfl-ada/ada-2021-project-sars/tree/main/sentime
 
 <p>Word-clouds sort the most present words by size. We partition the datasets for each year by positive/negative quotes and plot their respective word-clouds. We can intuitively assess the precision of our model by looking at them. We classify quotes with strong negative polarity valence (&lt; -0.8) as negative and strong positive polarity valence (&gt; 0.8) as positive quotes. Thus filtering all quotes with low-confidence of low polarity. We observe a majority of [great, good, win] for positive quotes and [worst, hate] for negative quotes.</p>
 
-<p>[ADD FREQUENCY DISTRIBUTION OF POLARITY AND SUBJECTIVITY SCORES OVER 2012, 2016, 2020]</p>
-
 <iframe src="/ada_story/img/posts/sentiment.html" height="500px" width="100%" frameborder="0"></iframe>
 
 <p>We observe that a majority of quotes are analyzed as neutral (with respect to all models). This could be explained by a bias of the dataset as well as our sentiment analysis bias. We figured that the choice of stopwords to be removed from the strings is crucial to attributing positive or negative values.</p>
 
-<h4 id="evolution-of-polarity--subjectivity-score-over-months-prior-to-election">Evolution of polarity &amp; subjectivity score over months prior to election</h4>
+<center>
+  <h3>Evolution of polarity &amp; subjectivity score over months prior to election
+</h3>
+</center>
 
 <p>We decide to compare vote intentions with aggregated polarity of quotes on a candidate/monthly basis. Let’s plot the polarity and subjectivity distributions over time.</p>
 
@@ -455,10 +476,15 @@ see <a href="https://github.com/epfl-ada/ada-2021-project-sars/tree/main/sentime
 
 <p>Why not take into account quotes with neutral polarity ?</p>
 
-<h3 id="correlation-results">Correlation Results:</h3>
+<center>
+  <h2>Correlation Results</h2>
+</center>
+
 <iframe src="/ada_story/img/posts/sentiment_correlation.html" height="600px" width="110%" frameborder="0"></iframe>
 
-<h1 id="so-did-we-find-adastonishing-results">So, did we find ADAstonishing results?</h1>
+<center>
+  <h2># So, did we find ADAstonishing results?</h2>
+</center>
 
 <p>Conclude the study here</p>
 
