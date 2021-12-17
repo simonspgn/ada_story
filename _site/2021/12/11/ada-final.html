@@ -70,7 +70,7 @@
               <a href="#">Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</a>
               on December 11, 2021 &middot; <span class="reading-time" title="Estimated read time">
   
-   41 mins  read </span>
+   44 mins  read </span>
 
             </span>
           </div>
@@ -100,6 +100,7 @@
       <ul>
         <li><a href="#subparagraph3">Baseline Correlation Study Between Media Coverage &amp; Voting intentions</a>
           <ul>
+            <li><a href="#subsubparagraph0">Preprocessing &amp; Analysis</a></li>
             <li><a href="#subsubparagraph1">Correlation Results</a></li>
           </ul>
         </li>
@@ -209,19 +210,38 @@
    <h1>Getting Our Hands Dirty</h1>
  </center>
 
-<p>We perform the correlation study here. We first start by a baseline model in which we compare media coverage and voting intentions on a per week? basis. We use regression analysis/statistical tests…. FILL IN HERE
-We then further the analysis by including sentiment analysis as a covariate…. FILL IN HERE</p>
+<p>We perform the correlation study here.</p>
 
-<p>In this section, we’ll study the correlation between the media coverage quantified and the voting intentions. First we’ve implemented a very simple baseline model… and then we’ve enhanced it by using unsupervised sentiment analysis…</p>
+<p><del>We first start by a baseline model in which we compare media coverage and voting intentions on a per week? basis. We use regression analysis/statistical tests…. FILL IN HERE
+We then further the analysis by including sentiment analysis as a covariate….</del></p>
 
-<p>There are several timeframe levels (such as year, month, week and day) in which we can aggregate the results for each combination of election year, candidate, and newspaper. If we aggregate by year we will have 1 data point only, by month 12 data points at most and 3 in the worst case (because some months will be discarded due to the small amount of occurrences). Due to the lack of data in 2016 and 2020 we found that the it may be a better compromise between number of occurrences per period of time and the number of data points is achieved when we aggregate by week. The aggregation is performed as follows: take the mean of intention votes over the week (by choosing the end date of the poll to specify the week), and the occurrences will be rescaled by taking the occurrences of quotes for a specific combination over the week and dividing it by the total number of quotations in the specific week and newspaper.</p>
+<p>Our goal is to discover if there is a relationship between the media coverage (by the newspapers) and the voting intention (for the elections of 2012, 2016 and 2020) and what kind relationship it is, in order to gain insights and form our conclusion. In the first part we aggregate our data to have meaningful combined variables. Then in the second part we visualize the distributions of each combination of election year, candidate and newspaper. Finally, we compute the correlation between the variables of interest (media coverage and voting intention) and provide the p-values associated with the coefficients. We also give some interpretations to our results. Now let us detail each step of our study.</p>
 
 <center>
   <a name="subparagraph3"></a>
   <h2>Baseline Correlation Study Between Media Coverage &amp; Voting intentions</h2>
 </center>
 
-<p>NOTE: Since we use a p-value to confirm/reject our correlation study, we may have to expressively describe what the null hypothesis is.</p>
+<p>(<strong>EXPLAIN HERE PURPOSE OF THE SECTION</strong>)</p>
+
+<center>
+  <a name="subsubparagraph0"></a>
+  <h3>Preprocessing &amp; Analysis</h3>
+ </center>
+
+<p>The aim of the aggregation is to help us find correlation in the analysis part, but also to summarize the essentials of our data and visualize it in a meaningful way. There are several time frames levels (such as year, month, week and day) in which we can aggregate the results for each combination of election year, candidate, and newspaper. If we aggregate by year we will have 1 data point only, by month 12 data points at most and 3 in the worst case (because some months will be discarded due to the small amount of occurrences in those months). Due to the lack of data in 2016 and 2020 we found that the it may be a better compromise between number of occurrences per period of time and the number of data points is achieved when we aggregate by week.</p>
+
+<p>More precisely, the aggregation is performed as follows: for each triplet (year, candidate, newspaper) we take the mean of intention votes over the week (by choosing the end date of the poll to specify the week). We do not need more robust statistics here, because we do not have outliers. However, just summing the quotations occurrences for each week is not a realistic measure of how important those occurrences were. Thus, we purposefully re-scale each sum of occurrences by dividing the sum by the total number of quotations during that same week.</p>
+
+<p>Next, we show the plots of the distributions and their relation for the aggregated variables “weekly_occurrences_rescaled” and “intention_mean”.  We can see that this is real word data, because most of the plots do not seem to have a clear relationship (except for those of the election 2016 which seems more linear).</p>
+
+<p>[ADD PLOT HERE]</p>
+
+<p>After this we use correlation to give us more insight on whether the two variables have some dependence or not, and to show if the correlation is positive or negative. We will use a normality test in order to choose a suitable type of correlation for our data. We have to decide how to measure the correlation. For that we need to test the assumptions, and if the assumption is checked we can use Pearson’s correlation, otherwise we use Spearman’s correlation. Spearman’s correlation is a more general measure which captures the monotic relationship between the two variables.</p>
+
+<p><a href="https://www.researchgate.net/post/Which-correlation-coefficient-is-better-to-use-Spearman-or-Pearson">We should test whether our data is normally distributed, if so we can use Pearson’s correlation, otherwise we will use Spearman’s correlation</a>. The reason for using such an assumption is that under the normality condition we get an unbiased estimator, because the error terms are normally distributed. While Spearman’s correlation is more flexible (more relaxed assumptions) do not need that assumption and is more robust against outliers. So using Spearman’s correlation is more effective.</p>
+
+<p>To test the whether the data was drawn from a normal distribution we apply Shapiro-Wilk test to the ‘weekly_occurrences_rescaled’ and ‘intention_mean’ variables for each combination. Shapiro-Wilk test is a method for normality testing, it is said to be one of the most popular and powerful method to detect nonnormality (which we want to show). If the p-value is larger than 0.05 then we can assume that the variable distribution is normally distributed.</p>
 
 <style type="text/css">
 #T_dfd07_row0_col0,#T_dfd07_row0_col1,#T_dfd07_row0_col2,#T_dfd07_row0_col4,#T_dfd07_row1_col0,#T_dfd07_row1_col1,#T_dfd07_row1_col2,#T_dfd07_row1_col3,#T_dfd07_row1_col4,#T_dfd07_row2_col0,#T_dfd07_row2_col1,#T_dfd07_row2_col2,#T_dfd07_row2_col4,#T_dfd07_row3_col0,#T_dfd07_row3_col1,#T_dfd07_row3_col2,#T_dfd07_row4_col0,#T_dfd07_row4_col1,#T_dfd07_row4_col2,#T_dfd07_row5_col0,#T_dfd07_row5_col1,#T_dfd07_row5_col2,#T_dfd07_row6_col0,#T_dfd07_row6_col1,#T_dfd07_row6_col2,#T_dfd07_row6_col3,#T_dfd07_row6_col4,#T_dfd07_row7_col0,#T_dfd07_row7_col1,#T_dfd07_row7_col2,#T_dfd07_row7_col3,#T_dfd07_row7_col4,#T_dfd07_row8_col0,#T_dfd07_row8_col1,#T_dfd07_row8_col2,#T_dfd07_row8_col4,#T_dfd07_row9_col0,#T_dfd07_row9_col1,#T_dfd07_row9_col2,#T_dfd07_row9_col3,#T_dfd07_row9_col4,#T_dfd07_row10_col0,#T_dfd07_row10_col1,#T_dfd07_row10_col2,#T_dfd07_row10_col3,#T_dfd07_row10_col4,#T_dfd07_row11_col0,#T_dfd07_row11_col1,#T_dfd07_row11_col2,#T_dfd07_row11_col3,#T_dfd07_row11_col4,#T_dfd07_row12_col0,#T_dfd07_row12_col1,#T_dfd07_row12_col2,#T_dfd07_row12_col4,#T_dfd07_row13_col0,#T_dfd07_row13_col1,#T_dfd07_row13_col2,#T_dfd07_row13_col4,#T_dfd07_row14_col0,#T_dfd07_row14_col1,#T_dfd07_row14_col2,#T_dfd07_row14_col3,#T_dfd07_row14_col4,#T_dfd07_row15_col0,#T_dfd07_row15_col1,#T_dfd07_row15_col2,#T_dfd07_row15_col3,#T_dfd07_row15_col4,#T_dfd07_row16_col0,#T_dfd07_row16_col1,#T_dfd07_row16_col2,#T_dfd07_row16_col3,#T_dfd07_row16_col4,#T_dfd07_row17_col0,#T_dfd07_row17_col1,#T_dfd07_row17_col2,#T_dfd07_row17_col3,#T_dfd07_row17_col4{
@@ -377,6 +397,8 @@ We then further the analysis by including sentiment analysis as a covariate…. 
             </tr>
     </tbody></table>
 
+<p>Based on the above discussion and the fact that $\frac{11}{36}$ of the p-values are smaller than $0.05$ (we can reject the null hypothesis, i.e. that the data is normally distributed), we decide to use Spearman’s correlation.</p>
+
 <p>We started our correlation study by applying Spearman’s rank correlation analysis between the media coverage rescaled (EXPLAIN HERE) and the voting intentions for each candidate in a given newspaper. We choose this metric as we noted that the media coverage variable is not normally distributed thus…. (EXPAND HERE - What does it mean? What’s the implication of not having a normally distributed media coverage? Why could we not use other models?). We view our model as having intention vote as the dependent variable and media coverage as the predictor. The correlation results are illustrated in the chart below. Note that correlations in which the p-value is smaller than 0.05 (cases in which our hypothesis is statistically significant) are marked with dotted patterns to distinguish them from p-values that cannot be rejected (&gt;0.05). We also note that the correlation study for 2016 and 2020 is performed only for the months in which we deemed to have enough media coverage data (2016: July, August, September; 2020: January, February, March, April). We did not include any specific statistical study or threshold to pick the months with “enough” data. Rather, we pick these months based on the visualizations presented in the previous section.</p>
 
 <center>
@@ -386,7 +408,7 @@ We then further the analysis by including sentiment analysis as a covariate…. 
 
 <iframe src="/ada_story/img/posts/baseline_correlation.html" height="500px" width="100%" frameborder="0"></iframe>
 
-<p>We present in the illustration above three categories: statistical tests in which we have clear significance where p&lt;0.05 (marked in dark blue), statistical tests in which we observed “weak evidence” where p is between 0.05 and 0.1 (marked in light blue) and finally statistical tests that do not present any significance, where p&gt;0.1 (marked in red).</p>
+<p>We present in the illustration above three categories: statistical tests in which we have clear significance where p&lt;0.05 (marked in dark blue), statistical tests in which we observed “weak significance” where p is between 0.05 and 0.1 (marked in light blue) and finally statistical tests that do not present any significance, where p&gt;0.1 (marked in red).</p>
 
 <p>We note a few interesting observations:</p>
 
