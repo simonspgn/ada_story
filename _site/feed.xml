@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/ada_story/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/ada_story/" rel="alternate" type="text/html" /><updated>2021-12-17T15:14:48+01:00</updated><id>http://localhost:4000/ada_story/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/ada_story/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/ada_story/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/ada_story/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/ada_story/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/ada_story/" rel="alternate" type="text/html" /><updated>2021-12-17T18:54:50+01:00</updated><id>http://localhost:4000/ada_story/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/ada_story/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/ada_story/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/ada_story/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…&lt;/p&gt;
 
 &lt;hr /&gt;
 &lt;h1 id=&quot;table-of-contents&quot;&gt;Table of contents&lt;/h1&gt;
@@ -461,6 +461,36 @@ Furthermore, we observe a very different timeline for the 2016 election due to m
   &lt;a name=&quot;paragraph5&quot;&gt;&lt;/a&gt;
   &lt;h1&gt;Bonus: Because we still have something up our sleeve&lt;/h1&gt;
 &lt;/center&gt;
+
+&lt;p&gt;In this section we’ll discover another way to study the correlation between media coverage and topic modeling. First of all, We cluster the Quotes in six topics or related groups of news by using LDA topic modeling. The reason behind factorising the corpus in six topics was based on having a lowdimensional representation of the corpus and a clear interpretation of the topics due to our prior knowledge of the political background. We found that this factorisation allowed us to draw useful conclusions. However, more sophisticated methodologies to estimate the number of topics in a corpus can be taken into account in future researches.&lt;/p&gt;
+
+&lt;center&gt;
+  &lt;h2&gt;Topic modeling results&lt;/h2&gt;
+&lt;/center&gt;
+
+&lt;p&gt;After pre-processing of the quotations cited in &lt;strong&gt;FOX News&lt;/strong&gt;, we’ve applied LDA on it and by using PyLDAvis we got the visualization below :&lt;/p&gt;
+
+&lt;h4 id=&quot;clustering-fox-news-quotations&quot;&gt;Clustering FOX News quotations:&lt;/h4&gt;
+&lt;iframe src=&quot;/ada_story/img/posts/lda.html&quot; height=&quot;900px&quot; width=&quot;100%&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;img src=&quot;/ada_story/img/posts/topics.png&quot; alt=&quot;image 5&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/ada_story/img/posts/topic.png&quot; alt=&quot;image 6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The ﬁrst topic is about elections in general and it is represented by words, like campaign, election, candidate, etc. This result is consistent with the fact that we analyse political news during the campaign period, but we choose to discard it given its lack of speciﬁcity.&lt;/p&gt;
+
+&lt;p&gt;The other topics are very informative and reveals the subjects discussed during the electoral campaign, which we label and brieﬂy describe as :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;“Clinton email controversy”: Covers the famous controversy Hillary Clinton faced during the elections she used her private email server for official communication.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;“Immigration”: It is about the fortiﬁed wall between Mexico and USA proposed by Donald Trump to stop Latin illegal immigration.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The keywords which deﬁne these 2 topics are represented in the wordclouds above.&lt;/p&gt;
 
 &lt;center&gt;
   &lt;a name=&quot;paragraph3&quot;&gt;&lt;/a&gt;
