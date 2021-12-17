@@ -555,7 +555,9 @@ Finally, we observe a very different timeline for the 2016 election due to missi
 <p>After pre-processing of the quotations cited in <strong>FOX News</strong>, we’ve applied LDA on it and by using PyLDAvis we got the visualization below :</p>
 
 <h4 id="clustering-fox-news-quotations">Clustering FOX News quotations:</h4>
+<div style="position:relative; right:150px;">
 <iframe src="/ada_story/img/posts/lda.html" height="900px" width="150%" frameborder="0"></iframe>
+</div>
 
 <p><img src="/ada_story/img/posts/topics.png" alt="image 5" /></p>
 
@@ -578,7 +580,9 @@ Finally, we observe a very different timeline for the 2016 election due to missi
 
 <p>After assigning the topics and their weights to each of the quotes, we’ve plotted the time series for <strong>FOX News</strong> coverage in 2016:</p>
 
+<p align="center">
 <iframe src="/ada_story/img/posts/topic_weight.html" height="500px" width="100%" frameborder="0"></iframe>
+</p>
 
 <p>And now we can use these time series given above to calculate the Spearman correlations with the voting intentions, and this would give us different insights on what we did previously (in the baseline and sentiment analysis). What could be also interesting is to run a regression analysis using <strong>sentiment analysis</strong> and <strong>topic_weight</strong> as covariates.</p>
 

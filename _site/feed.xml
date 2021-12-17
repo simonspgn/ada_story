@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/ada_story/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/ada_story/" rel="alternate" type="text/html" /><updated>2021-12-17T20:45:26+01:00</updated><id>http://localhost:4000/ada_story/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/ada_story/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/ada_story/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/ada_story/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we explore the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We present several analyses that may (or may not) determine an existing correlation between media coverage of a presidential candidate and their respective voting intentions in the months preceding the elections. Hop in, buckle up and enjoy!&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/ada_story/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/ada_story/" rel="alternate" type="text/html" /><updated>2021-12-17T20:57:51+01:00</updated><id>http://localhost:4000/ada_story/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/ada_story/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/ada_story/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/ada_story/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we explore the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We present several analyses that may (or may not) determine an existing correlation between media coverage of a presidential candidate and their respective voting intentions in the months preceding the elections. Hop in, buckle up and enjoy!&lt;/p&gt;
 
 &lt;hr /&gt;
 &lt;h1 id=&quot;table-of-contents&quot;&gt;Table of contents&lt;/h1&gt;
@@ -470,7 +470,9 @@ Finally, we observe a very different timeline for the 2016 election due to missi
 &lt;p&gt;After pre-processing of the quotations cited in &lt;strong&gt;FOX News&lt;/strong&gt;, we’ve applied LDA on it and by using PyLDAvis we got the visualization below :&lt;/p&gt;
 
 &lt;h4 id=&quot;clustering-fox-news-quotations&quot;&gt;Clustering FOX News quotations:&lt;/h4&gt;
+&lt;div style=&quot;position:relative; right:150px;&quot;&gt;
 &lt;iframe src=&quot;/ada_story/img/posts/lda.html&quot; height=&quot;900px&quot; width=&quot;150%&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;/ada_story/img/posts/topics.png&quot; alt=&quot;image 5&quot; /&gt;&lt;/p&gt;
 
@@ -493,7 +495,9 @@ Finally, we observe a very different timeline for the 2016 election due to missi
 
 &lt;p&gt;After assigning the topics and their weights to each of the quotes, we’ve plotted the time series for &lt;strong&gt;FOX News&lt;/strong&gt; coverage in 2016:&lt;/p&gt;
 
+&lt;p align=&quot;center&quot;&gt;
 &lt;iframe src=&quot;/ada_story/img/posts/topic_weight.html&quot; height=&quot;500px&quot; width=&quot;100%&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;/p&gt;
 
 &lt;p&gt;And now we can use these time series given above to calculate the Spearman correlations with the voting intentions, and this would give us different insights on what we did previously (in the baseline and sentiment analysis). What could be also interesting is to run a regression analysis using &lt;strong&gt;sentiment analysis&lt;/strong&gt; and &lt;strong&gt;topic_weight&lt;/strong&gt; as covariates.&lt;/p&gt;
 
