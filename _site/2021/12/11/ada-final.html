@@ -12,7 +12,7 @@
     
   </title>
 
-  <meta name="description" content="Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past ...">
+  <meta name="description" content="Welcome to Team SARS’ final ADAmazing project. In this study, we explore the intricate relationship between voting intentions and media coverage in the past ...">
 
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -70,7 +70,7 @@
               <a href="#">Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</a>
               on December 11, 2021 &middot; <span class="reading-time" title="Estimated read time">
   
-   48 mins  read </span>
+   51 mins  read </span>
 
             </span>
           </div>
@@ -83,7 +83,7 @@
     <div class="row">
       <div class="col-lg-8 col-lg-10 mx-auto text-justify">
       <!col-lg-8 col-md-10 mx-auto>
-        <p>Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…</p>
+        <p>Welcome to Team SARS’ final ADAmazing project. In this study, we explore the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We present several analyses that may (or may not) determine an existing correlation between media coverage of a presidential candidate and their respective voting intentions in the months preceding the elections. Hop in, buckle up and enjoy!</p>
 
 <hr />
 <h1 id="table-of-contents">Table of contents</h1>
@@ -202,7 +202,7 @@
 
 <iframe src="/ada_story/img/posts/voting_intentions_allyears.html" height="500px" width="100%" frameborder="0"></iframe>
 
-<p>the figure above displays the time series of potential percentage of votes for each candidate. Each point in the time series corresponds to a particular date, but its value is the average of the entire the week before (<strong>SAAD WHAT DO YOU MEAN? ENTIRE WEEK BEFORE?  COULD YOU DEVELOP A TINY BIT?</strong>). In other words, a 7-days sliding window average was used and in consequence each point in the time series takes into account an average of 19 polls.</p>
+<p>the figure above displays the time series of potential percentage of votes for each candidate. Each point in the time series corresponds to a particular date, but its value is the average of polls aggregated per week. In other words, a 7-days sliding window average was used and in consequence each point in the time series takes into account an average of 19 polls.</p>
 
 <p>We note in the figure that during the 2016 elections, democratic candidate Hillary Clinton kept up an advantage over her opponent Donald Trump during the entire presented time period. However, we do observe that clear drops in voting intentions for the months of April, May, July, August and October for Hillary Clinton. If we inspect the individual series, we can see that the initial advantage decrease of Hillary Clinton is almost inversively proportional to the gradual ascend of Trump’s popularity until October. It is also very interesting to analyse such time series in retrospect, i.e after knowing the outcome of the elections. Simply from the presented 2016 time series, we see a rather obvious distinction between the presented poll numbers and the final outcome of the election, i.e Hillary Clinton is continually leading in the polls, yet ended up loosing the race for Presidency. Nevertheless, the overal trends of candidate popularity in the months preceding the elections do show a steady decrease for candidate Hillary Clinton and a steady increase for candidate Donald Trump.</p>
 
@@ -227,11 +227,11 @@
   <h3>Preprocessing &amp; Analysis</h3>
  </center>
 
-<p>One of the most important aspect of the preprocessing done to our data is the metric on which we decide to aggregate it. Choosing a suitable enough method will allow us to summarize the essentials of the quotations without loosing valuable information through aggregation. For instance, if we decide to aggregate our quotations by year, we will only have 1 data point. Aggregating the quotations by months will give us 11 data points for 2012, 3 for 2016 and 4 for 2020. Clearly, these two options would not provide us with meaningful insights on correlations between media coverage and voting intentions due to the lack of data points caused by the aggregation. As such, we opt for a more fine-grained approach: aggregating the quotations by week. More precisely, the aggregation is performed as follows: for each triplet (year, candidate, newspaper) we take the mean of intention votes over the week (<strong>RAPHAEL THIS IS NOT CLEAR - ARE YOU TALKING ABOUT MEDIA COVERAGE OR VOTING INTENTIONS?</strong>). However, just summing the quotations occurrences for each week is not a realistic measure of how important those occurrences were (<strong>WHY?</strong>). Thus, we purposefully re-scale each sum of occurrences by dividing the sum by the total number of quotations during that same week.</p>
+<p>One of the most important aspect of the preprocessing done to our data is the metric on which we decide to aggregate it. Choosing a suitable enough method will allow us to summarize the essentials of the quotations without loosing valuable information through aggregation. For instance, if we decide to aggregate our quotations by year, we will only have 1 data point. Aggregating the quotations by months will give us 11 data points for 2012, 3 for 2016 and 4 for 2020. Clearly, these two options would not provide us with meaningful insights on correlations between media coverage and voting intentions due to the lack of data points caused by the aggregation. As such, we opt for a more fine-grained approach: aggregating the quotations by week. More precisely, the aggregation is performed as follows: for each candidate in a given election year we take the mean of intention votes over the week. As for the media coverage, we also distinguish between the newspapers. However, just summing the quotations occurrences for each week is not a realistic measure of how important those occurrences were, because the quotations in the Quotebank dataset are not uniformly distributed over the weeks. Thus, we purposefully re-scale each sum of occurrences by dividing the sum by the total number of quotations during that same week.</p>
 
-<p>As a second step in our correlation study set up, we determine which statistical test might be the most appropriate to use based on the distribution of our data. As such, we start by using a normality test to determine if our data follows a Gaussian distribution. If it does, we may be able to the Pearson correlation test since under such a condition of normality we can get an unbiased estimator as the error terms are normally distributed (<strong>RAPHAEL, CAN YOU MAKE THIS A TINY BIT CLEARER</strong>) [5]. On the other hand, if our data does not follow a normal distribution, we may use the Spearman’s Rank correlation test as it is regarded as a more general and flexible (less assumptions) measure which can capture the monotic relationship between our two variables of interest. [6]</p>
+<p>As a second step in our correlation study set up, we determine which statistical test might be the most appropriate to use based on the distribution of our data. As such, we start by using a normality test to determine if our data follows a Gaussian distribution. If it does, we may be able to the Pearson correlation test since under such a condition of normality we can get an unbiased estimator as the error terms are normally distributed, and so the test of significance of Pearson’s correlation coefficent may give wrong results.[5] On the other hand, if our data does not follow a normal distribution, we may use the Spearman’s Rank correlation test as it is regarded as a more general and flexible (less assumptions) measure which can capture the monotic relationship between our two variables of interest. [6]</p>
 
-<p>To test the whether the data was drawn from a normal distribution we apply the Shapiro-Wilk test [7] to our weekly occurences of quotations rescaled, and to the voting intentions’ weekly means variables retrieved for each (candidate, year, newspaper) combination. The Shapiro-Wilk test is one of the most popular and powerful method to detect nonnormality. If the p-value returned by the test is smaller than 0.05, then the null hypothesis that the data is normally distributed can be rejected. We present below a table of the Shapiro-Wilk test results retrieved for each (candidate, year, newspaper) combination.</p>
+<p>To test the whether the data was drawn from a normal distribution we apply the Shapiro-Wilk test [7] to our weekly occurences of quotations rescaled, and to the voting intentions’ weekly means variables retrieved for each (candidate, year, newspaper) combination. The Shapiro-Wilk test is one of the most popular and powerful method to detect nonnormality. We present below a table of the Shapiro-Wilk test results retrieved for each (candidate, year, newspaper) combination.</p>
 
 <style type="text/css">
 #T_dfd07_row0_col0,#T_dfd07_row0_col1,#T_dfd07_row0_col2,#T_dfd07_row0_col4,#T_dfd07_row1_col0,#T_dfd07_row1_col1,#T_dfd07_row1_col2,#T_dfd07_row1_col3,#T_dfd07_row1_col4,#T_dfd07_row2_col0,#T_dfd07_row2_col1,#T_dfd07_row2_col2,#T_dfd07_row2_col4,#T_dfd07_row3_col0,#T_dfd07_row3_col1,#T_dfd07_row3_col2,#T_dfd07_row4_col0,#T_dfd07_row4_col1,#T_dfd07_row4_col2,#T_dfd07_row5_col0,#T_dfd07_row5_col1,#T_dfd07_row5_col2,#T_dfd07_row6_col0,#T_dfd07_row6_col1,#T_dfd07_row6_col2,#T_dfd07_row6_col3,#T_dfd07_row6_col4,#T_dfd07_row7_col0,#T_dfd07_row7_col1,#T_dfd07_row7_col2,#T_dfd07_row7_col3,#T_dfd07_row7_col4,#T_dfd07_row8_col0,#T_dfd07_row8_col1,#T_dfd07_row8_col2,#T_dfd07_row8_col4,#T_dfd07_row9_col0,#T_dfd07_row9_col1,#T_dfd07_row9_col2,#T_dfd07_row9_col3,#T_dfd07_row9_col4,#T_dfd07_row10_col0,#T_dfd07_row10_col1,#T_dfd07_row10_col2,#T_dfd07_row10_col3,#T_dfd07_row10_col4,#T_dfd07_row11_col0,#T_dfd07_row11_col1,#T_dfd07_row11_col2,#T_dfd07_row11_col3,#T_dfd07_row11_col4,#T_dfd07_row12_col0,#T_dfd07_row12_col1,#T_dfd07_row12_col2,#T_dfd07_row12_col4,#T_dfd07_row13_col0,#T_dfd07_row13_col1,#T_dfd07_row13_col2,#T_dfd07_row13_col4,#T_dfd07_row14_col0,#T_dfd07_row14_col1,#T_dfd07_row14_col2,#T_dfd07_row14_col3,#T_dfd07_row14_col4,#T_dfd07_row15_col0,#T_dfd07_row15_col1,#T_dfd07_row15_col2,#T_dfd07_row15_col3,#T_dfd07_row15_col4,#T_dfd07_row16_col0,#T_dfd07_row16_col1,#T_dfd07_row16_col2,#T_dfd07_row16_col3,#T_dfd07_row16_col4,#T_dfd07_row17_col0,#T_dfd07_row17_col1,#T_dfd07_row17_col2,#T_dfd07_row17_col3,#T_dfd07_row17_col4{
@@ -387,8 +387,7 @@
             </tr>
     </tbody></table>
 
-<p>(<strong>RAPHAEL, WE NEED TO EXPLAIN THE TABLE MORE. WHATS I.N? WHATS O.N? WHAT DOES IT MEAN TO HAVE A P-VALUE SMALLER THAN 0.05 FOR O.N AND NOT I.N AND VICE-VERSA. PLEASE BE MORE SPECIFIC AND DESCRIPTIVE HERE IF YOU CAN</strong>)
-We note that for about 11 out of 36 of our combinations, the p-values returned for the I.N/O.I (<strong>RAPHAEL CHANGE/EXPLAIN THIS</strong>) are smaller than 0.05. Since there is a rather high number of combinations presenting non-normality, we decide to conduct our correlation study using Spearman’s Rank correlation coefficient. An additional argument for not using the Pearson’s correlation test is the fact that our data does not seem to present linear relationships (this was determined after visualizing the relationship of media coverage and voting intention for each of the aforementioned combination). As such, we believe that having a correlation test that measures the monotonic relationship between our two variable of interest is a more suitable metric for our study.</p>
+<p>In interpret this table as follows: if the p-value returned by the test is smaller than 0.05, then the null hypothesis that the data is normally distributed can be rejected. We note that for about 11 out of 36 of our combinations, the p-values returned for the intention normality test (I.N.) and the occurrences normality test (O.N.) are smaller than 0.05. We have two cases: if at least one of the two distributions (I.N. or O.N.) is not normally distributed the p-value of Pearson’s correlation coefficient may be wrong, in the other case (the two variables are normally distributed) the hypothesis testing can be done with no further assumptions. Since there is a rather high number of combinations presenting non-normality, we decide to conduct our correlation study using Spearman’s Rank correlation coefficient. An additional argument for not using the Pearson’s correlation test is the fact that our data does not seem to present linear relationships (this was determined after visualizing the relationship of media coverage and voting intention for each of the aforementioned combination). As such, we believe that having a correlation test that measures the monotonic relationship between our two variable of interest is a more suitable metric for our study.</p>
 
 <center>
   <a name="subsubparagraph1"></a>
@@ -473,7 +472,7 @@ but we assume for the sake of our analysis that its biased nature does not inter
 <ul>
   <li><a href="https://github.com/cjhutto/vaderSentiment">VADER</a> (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. It predicts the sentiment of the quote as a float, positive values are positive valence, negative value are negative valence.</li>
   <li><a href="https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment">Pre-trained BERT</a> with &gt;700 embeddings (bert-base-multilingual-uncased-sentiment). This transformer-based model predicts the sentiment of the review as a number of stars (between 1 and 5).</li>
-  <li><a href="https://textblob.readthedocs.io/en/dev/quickstart.html#sentiment-analysis">TextBlob</a>. This model aims at providing access to common text-processing operations through a familiar interface (<strong>MAYBE I DONT GET IT HERE BUT WHATS A FAMILIAR INTERFACE?</strong>). The polarity score is a float within the range [-1.0, 1.0]. The subjectivity is a float within the range [0.0, 1.0] where 0.0 is highly objective while 1.0 is highly subjective.</li>
+  <li><a href="https://textblob.readthedocs.io/en/dev/quickstart.html#sentiment-analysis">TextBlob</a>. This model aims at providing access to common text-processing operations. The polarity score is a float within the range [-1.0, 1.0]. The subjectivity is a float within the range [0.0, 1.0] where 0.0 is highly objective while 1.0 is highly subjective.</li>
 </ul>
 
 <center>
@@ -486,7 +485,7 @@ but we assume for the sake of our analysis that its biased nature does not inter
 <ul>
   <li>An additional interesting metric by default: subjectivity.</li>
   <li>The ‘default’ return value is a polarity score of 0 (neutral) which is of particular interest to our study and easy to interpret. Note that such a return neutral score is not by the other models. For instance, BERT outputs a majority of 1-labeled quotes (highly negative labeled quotations) by default which would introduce inaccuracies in our dataset.</li>
-  <li>Since we decided to aggregate the data by weeks for the correlation study, we use numerical data indicating sentiment scores rather than categorical one (<strong>WHY?? WE NEED TO DEVELOP HERE. ARENT THE PLOTS BELOW ALSO BASED ON MONTHS AND NOT WEEKS?</strong>)</li>
+  <li>Since we aggregate the data by (months/weeks) for the correlation study, we prefer numerical data indicating sentiment scores rather than categorical ones. This hopefully offers a more wide range of sentiments/emotions.</li>
 </ul>
 
 <p>A typical processing and regression pipeline on a single quote would be the following:</p>
@@ -520,11 +519,11 @@ but we assume for the sake of our analysis that its biased nature does not inter
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
 </script>
 
-<p>We can note from the two plots above a few interesting observations. First, there is a noticeable increase in polarity (2-factor) in the last month of 2012 (November) just prior to elections without a noticeable change in subjectivity. This could mean all newspapers focus on promoting their favorite candidate rather than writing about the opposing one.
-Unfortunately, the overall change in polarity (y-axis) from a month to another is (in most cases) very small. This makes it difficult to draw a meaningful conclusion as no statistical change can be observed when comparing the various means of the standard deviation of the population (<strong>ANTOINE/SAAD: OF THE POPULATION? THIS SENTENCE IS NOT SUPER CLEAR TO ME</strong>) : \(std_{2012} = 0.247\), \(std_{2016} = 0.235\) &amp; \(std_{2020} = 0.253\). These numbers are much higher than the measured changes between months (<strong>NOT SURE WHAT THE IMPLICATION OF THIS IS? MAY BE SOMETHING TO ADD HERE</strong>). A similar effect can be noticed with subjectivity scores: \(std_{2012} = 0.3155\), \(std_{2016} = 0.2956\), \(std_{2020} = 0.3098\).
-Furthermore, we observe a very different timeline for the 2016 election due to missing data and quotes from 2020 don’t extending past April. (<strong>SO WHAT? PROBABLY NEED A BIT MORE IN THIS SECTION/PARAGRAPH?</strong>)</p>
+<p>We can note from the two plots above a few interesting observations. First, most of the quotes are labeled as neutral which centers heavily the data around 0. Secondly, there is a noticeable increase in polarity (2-factor) in the last month of 2012 (November) just prior to elections without a noticeable change in subjectivity. This could mean all newspapers focus on promoting their favorite candidate rather than writing about the opposing one.
+Unfortunately, the change in polarity (y-axis) from a month to another is (in most cases) very small. On average, the rate of change of polarity score is 100x smaller than the corresponding standard deviation. To illustrate, we compute the average standard deviation of polarity score over the whole year : \(p_{std}^{2012} = 0.247\), \(p_{std}^{2016} = 0.235\) &amp; \(p_{std}^{2020} = 0.253\). This makes it difficult to compare and draw a meaningful statistical conclusion and indicates the need for more data points. A similar effect can be noticed with subjectivity scores: \(s_{std}^{2012} = 0.3155\), \(s_{std}^{2016} = 0.2956\), \(s_{std}^{2020} = 0.3098\).
+Finally, we observe a very different timeline for the 2016 election due to missing data and quotes from 2020 don’t extending past April. This is explained by the <a href="https://simonspgn.github.io/ada_story/2021/12/11/ada-final.html#subparagraph1">missing data in media coverage</a>.</p>
 
-<p>As the aforementioned results show, candidate mentions and polarity values on their own are not sufficient to explain shifts in voting intentions. As such, we decide to combine these results in a new, more fine-grained correlation study. To do so, we repeat the Spearman correlation tests as previously done in the baseline study, this time partitioning the datasets for each candidate based on polarity (&gt;0 positive and &lt;0 negative). Finally, we highlight the fact that we do not take into account the quotes with neutral polarity. This decision was made on the assumptions that neutral quotes might be the result of a model error or over-preprocessing of the quot. And that any statistically significant correlation between neutral quotes and voting intentions might hard to interpret.</p>
+<p>As the aforementioned results show, candidate mentions and polarity values on their own are not sufficient to explain shifts in voting intentions. As such, we decide to combine these results in a new, more fine-grained correlation study. To do so, we repeat the Spearman correlation tests as previously done in the baseline study, this time partitioning the datasets for each candidate based on polarity (&gt;0 positive and &lt;0 negative). Finally, we highlight the fact that we do not take into account the quotes with neutral polarity, which is the overhelming majority and contributes to the issues explained above. This decision was made on the assumptions that neutral quotes might be the result of a model error or over-preprocessing of the quote. And that any statistically significant correlation between neutral quotes and voting intentions might be hard to interpret.</p>
 
 <center>
   <a name="subsubparagraph4"></a>
@@ -556,7 +555,7 @@ Furthermore, we observe a very different timeline for the 2016 election due to m
 <p>After pre-processing of the quotations cited in <strong>FOX News</strong>, we’ve applied LDA on it and by using PyLDAvis we got the visualization below :</p>
 
 <h4 id="clustering-fox-news-quotations">Clustering FOX News quotations:</h4>
-<iframe src="/ada_story/img/posts/lda.html" height="900px" width="100%" frameborder="0"></iframe>
+<iframe src="/ada_story/img/posts/lda.html" height="900px" width="150%" frameborder="0"></iframe>
 
 <p><img src="/ada_story/img/posts/topics.png" alt="image 5" /></p>
 
@@ -577,19 +576,30 @@ Furthermore, we observe a very different timeline for the 2016 election due to m
 
 <p>The keywords which deﬁne these 2 topics are represented in the wordclouds above.</p>
 
+<p>After assigning the topics and their weights to each of the quotes, we’ve plotted the time series for <strong>FOX News</strong> coverage in 2016:</p>
+
+<iframe src="/ada_story/img/posts/topic_weight.html" height="500px" width="100%" frameborder="0"></iframe>
+
+<p>And now we can use these time series given above to calculate the Spearman correlations with the voting intentions, and this would give us different insights on what we did previously (in the baseline and sentiment analysis). What could be also interesting is to run a regression analysis using <strong>sentiment analysis</strong> and <strong>topic_weight</strong> as covariates.</p>
+
 <center>
   <a name="paragraph3"></a>
   <h1>So, summing up our ADAstonishing results</h1>
 </center>
 
-<ul>
-  <li>Talk about the study we performed (baseline study, data manipulation)</li>
-  <li>Talk about the problems with the data - the bias, the missing data, the assumptions that we made.</li>
-  <li>Considering all the issues from the previous point, we still managed to retrieve a few results of interest (Romney, and the 2016 Trump and Clinton in BBC)</li>
-  <li>This study would be interesting to conduct with more balanced and robust data. We were unlucky that the Quotebank dataset was missing so much data for 2016 and for 2020…</li>
-</ul>
+<p>In our story, we have performed a thorough analysis that aims at discovering a potential correlation between media coverage of three major newspaper outlets (BBC, NY Times and Fox News) and voting intentions for the past three presidential elections. After efficiently and meticulously retrieving and aggregating the data that we use for media coverage and voting intentions, we perform two correlation analysis: one based only on the differences noticed in distributions of media coverage and voting intentions, the other, most specific, in which we add a dimension of sentimentality to the analysis.</p>
 
-<p>Conclude the study here</p>
+<p>We are happy to see that the results of our initial study do show a some statistical significance for a few newspapers and candidates (such as BBC and candidates Donald Trump and Hillary Clinton in 2016) which may be an indicator of a correlation between media coverage and voting intentions. Additionally, the results of our correlation study conducted with sentiment analysis give us a more detailed indicator of which types of quotations may have an positive or negative impact on the voting intentions (e.g Hillary Clinton and Donald Trump in BBC in 2016 and Joe Biden in BBC in 2020). Nevertheless, we note that our results are hard to interpret and do not provide the full insight into a potential correlation and/or causality between media coverage and voting intentions. The majority of the results observed in our two correlation studies exhibit high p-values, thus giving us no further information regarding potential conclusions to draw.</p>
+
+<p>We believe that the nature of the Quotebank dataset (i.e biased quotations and missing data), may have had a significant negative impact on our study. Ideally, we would re-conduct this study on a balanced, unbiased dataset (especially important for the sentiment analysis) with sufficient data points (quotations), equally divided among the months of each year of interest. We highlight the fact that the Quotebank dataset is not an accurate representation of media coverage.</p>
+
+<p>We added as a final section, an expansion of our correlation analysis via topic modeling. This would be a good approach to have different insightful results not previously visible in the two correlation studies performed above.</p>
+
+<p>All in all, considering the nature of the data on which the study was performed, we believe that a few insightful tools have been developed and subsequently interesting results retrieved, which could in turn motivate for further research on the intrinsic relationship between media coverage and voting intentions.</p>
+
+<p>Thank you very much for this semester’s great ADAventure, we hope you have enjoyed our data story as much as we have enjoyed creating it.</p>
+
+<p>Team SARS</p>
 
 <center>
   <a name="paragraph4"></a>
