@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/ada_story/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/ada_story/" rel="alternate" type="text/html" /><updated>2021-12-17T14:55:44+01:00</updated><id>http://localhost:4000/ada_story/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/ada_story/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/ada_story/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/ada_story/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/ada_story/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/ada_story/" rel="alternate" type="text/html" /><updated>2021-12-17T15:14:48+01:00</updated><id>http://localhost:4000/ada_story/feed.xml</id><title type="html">SARS Project</title><subtitle>Welcome to Team SARS’ notebook. Visit the project below for the start of your incredible ADAventure!</subtitle><author><name>Simon Spangenberg, Saad Charkaoui, Raphael Bonatti, Antoine Crettenand</name></author><entry><title type="html">A Data Analysis on Political Popularity and Media Coverage</title><link href="http://localhost:4000/ada_story/2021/12/11/ada-final.html" rel="alternate" type="text/html" title="A Data Analysis on Political Popularity and Media Coverage" /><published>2021-12-11T04:45:13+01:00</published><updated>2021-12-11T04:45:13+01:00</updated><id>http://localhost:4000/ada_story/2021/12/11/ada-final</id><content type="html" xml:base="http://localhost:4000/ada_story/2021/12/11/ada-final.html">&lt;p&gt;Welcome to Team SARS’ final ADAmazing project. In this study, we analyze the intricate relationship between voting intentions and media coverage in the past three US presidential elections. We find that…&lt;/p&gt;
 
 &lt;hr /&gt;
 &lt;h1 id=&quot;table-of-contents&quot;&gt;Table of contents&lt;/h1&gt;
@@ -28,7 +28,8 @@
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#paragraph3&quot;&gt;So, did we find ADAstonishing results?&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#paragraph5&quot;&gt;Bonus: Because we still have something up our sleeve&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#paragraph3&quot;&gt;So, summing up our ADAstonishing results&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;#paragraph4&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/blockquote&gt;
@@ -457,8 +458,13 @@ Furthermore, we observe a very different timeline for the 2016 election due to m
 &lt;/ul&gt;
 
 &lt;center&gt;
+  &lt;a name=&quot;paragraph5&quot;&gt;&lt;/a&gt;
+  &lt;h1&gt;Bonus: Because we still have something up our sleeve&lt;/h1&gt;
+&lt;/center&gt;
+
+&lt;center&gt;
   &lt;a name=&quot;paragraph3&quot;&gt;&lt;/a&gt;
-  &lt;h1&gt;So, did we find ADAstonishing results?&lt;/h1&gt;
+  &lt;h1&gt;So, summing up our ADAstonishing results&lt;/h1&gt;
 &lt;/center&gt;
 
 &lt;ul&gt;
